@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const ContactApp());
+  runApp( ContactApp());
 }
 
 class ContactApp extends StatelessWidget {
-  const ContactApp({Key? key}) : super(key: key);
+  ContactApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +43,12 @@ class ContactListScreenState extends State<ContactListScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text("Confirmation"),
-        content: const Text("Are you sure for delete?"),
+        title:Text("Confirmation"),
+        content:Text("Are you sure for delete?"),
         actions: [
           IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.cancel_outlined, color: Colors.blueAccent),
+            icon:Icon(Icons.cancel_outlined, color: Colors.blueAccent),
             tooltip: "Cancel",
           ),
           IconButton(
@@ -58,7 +58,7 @@ class ContactListScreenState extends State<ContactListScreen> {
               });
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.delete, color: Colors.blueAccent),
+            icon:Icon(Icons.delete, color: Colors.blueAccent),
             tooltip: "Delete",
           ),
         ],
@@ -71,33 +71,33 @@ class ContactListScreenState extends State<ContactListScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
-        title: const Text(
+        title:Text(
           "Contact List",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
               controller: nameController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: "Name",
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 10),
+             SizedBox(height: 10),
             TextField(
               controller: numberController,
               keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
+              decoration:InputDecoration(
                 labelText: "Number",
                 border: OutlineInputBorder(),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: addContact,
               style: ElevatedButton.styleFrom(
@@ -106,9 +106,9 @@ class ContactListScreenState extends State<ContactListScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                minimumSize: const Size(double.infinity, 50),
+                minimumSize: Size(double.infinity, 50),
               ),
-              child: const Text(
+              child:Text(
                 "Add",
                 style: TextStyle(
                   color: Colors.white,
@@ -117,7 +117,7 @@ class ContactListScreenState extends State<ContactListScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+         SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: contacts.length,
@@ -127,13 +127,13 @@ class ContactListScreenState extends State<ContactListScreen> {
                     child: Card(
                       child: ListTile(
                         leading:
-                        const Icon(Icons.person, color: Colors.grey),
+                       Icon(Icons.person, color: Colors.grey),
                         title: Text(
                           contacts[index]['name'] ?? '',
-                          style: const TextStyle(color: Colors.red),
+                          style:TextStyle(color: Colors.red),
                         ),
                         subtitle: Text(contacts[index]['number'] ?? ''),
-                        trailing: const Icon(Icons.call,
+                        trailing: Icon(Icons.call,
                             color: Colors.blueAccent),
                       ),
                     ),
